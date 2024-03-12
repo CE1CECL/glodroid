@@ -1,0 +1,24 @@
+name: glodroid
+
+on:
+ workflow_dispatch:
+
+jobs:
+
+  glodroid:
+
+    runs-on: ubuntu-20.04
+    timeout-minutes: 9999
+
+    steps:
+    - name: Download Script.
+      run: sudo wget http://raw.githubusercontent.com/CE1CECL/glodroid/main/glodroid
+    - name: Chmod Script
+      run: sudo chmod 7777 -vR ./glodroid
+    - name: Run Script
+      run: sudo ./glodroid
+    - name: Upload
+      uses: actions/upload-artifact@v3
+      with:
+         name: glodroid.tar.zst
+         path: /home/runner/glodroid.tar.zst
